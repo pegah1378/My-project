@@ -1,0 +1,77 @@
+body {
+  background: linear-gradient(
+    109.6deg,
+    rgba(220, 196, 252, 0.74) 11.2%,
+    rgba(150, 199, 253, 0.75) 100.2%
+  ) !important;
+}
+.bodystyle {
+  margin: 30px;
+  border: 2px solid #bdbdbd;
+  background-color: white;
+}
+.sun {
+  width: 150px;
+}
+.flex {
+  display: flex;
+}
+.wind {
+  width: 150px;
+}
+.card-title {
+  display: block;
+  text-align: center;
+}
+.cardd-img-top {
+  width: 70px;
+  display: block;
+  margin: 0 auto;
+}
+.paper {
+  width: 100px;
+}
+#hr2 {
+  margin: 10px;
+}
+.card-text {
+  text-align: center;
+  display: block;
+}
+h6 {
+  text-align: center;
+}
+.card {
+  border-radius: 8px !important;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2) !important;
+}
+#search {
+  border-radius: 8px;
+  margin-left: 5px !important;
+  cursor: progress !important;
+}
+#current {
+  border-radius: 8px;
+  margin-left: 5px !important;
+}
+#city-name {
+  font-style: italic !important;
+}
+#cilis {
+  text-decoration: none !important;
+  color: black !important;
+}
+#faren {
+  text-decoration: none !important;
+  color: black !important;
+}
+#coder {
+  display: block;
+  text-align: center;
+  color: black;
+  font-family: "Damion", cursive;
+}
+#email {
+  text-decoration: none !important;
+  color: rgb(32, 31, 31);
+}

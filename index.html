@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat&family=Damion&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+ 
+  </head>
+  <body>
+    <div class="bodystyle">
+    <div class="container">
+    <div class="row justify-content-around">
+      <div class="shadow  rounded">
+        <nav class="navbar navbar-light bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <img src="src/PngItem_1780599.png" alt="" class="paper" />
+            </a>
+            <form class="d-flex">
+              <input
+                class="form-control "
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                id="cityname";
+              />
+              <button class="btn btn-outline-success submit-city" type="submit" id="search">
+                Search
+              </button>
+              <button class="btn btn-outline-primary submit-city" type="submit" id="current">
+                Current
+              </button>
+            </form>
+            
+          </div>
+        </nav>
+      </div>
+</div>
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-md-2">
+            <br>
+            <img src="src/output-onlinegiftools (2).gif" class="sun" />
+          </div>
+          <div class="col-md-2">
+            <h2>
+              <br>
+              <p class="fw-bolder city-name" id="city-name">Tehran</p>
+            </h2>
+           
+            <h3>
+              <p class="fw-light">
+               <span id="number"> 19</span> ° <a href="#" id="cilis"> C </a> | <a href="#" id="faren"> F </a><br />
+               <span id="nowDate">saturday , 2022.2.19</span>
+               <br>
+               <span id="time"></span>
+              </p>
+            </h3>
+          </div>
+          <div class="col-md-2">
+            <br>
+            <img src="src/output-onlinegiftools (3).gif" class="wind" />
+            <p> <em>Humidity</em> <span id="humidity">52</span>%</p>
+            <p> <em>Speed </em>: <span id="speed"> 12-28</span> km / h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="container">
+       <hr class="bg-dark " id="hr2"></div>
+       <div class="shadow  bg-body rounded">
+      <div class="container"> <!--full box-->
+        <div class="row justify-content-around"> <!--row-->
+          <div class="card col-md-2">
+              <h4 class="card-title">Sunday</h4>
+              <img class="cardd-img-top" src="src/output-onlinegiftools (4).gif" alt="Card image cap" >
+                  <div class="card-body">
+                      
+                      <h6>2022.2.20</h6>
+                      <p class="card-text">8° <br>
+                        
+                        Direction : south-west
+                        <br>
+                        Speed : 12-28 km/h
+                      </p>
+                      
+                  </div>
+              </div>
+        
+          <div class="card col-md-2">
+              <h4 class="card-title">Monday</h4>
+              <img class="cardd-img-top" src="src/output-onlinegiftools (5).gif" alt="Card image cap">
+                  <div class="card-body">
+                      
+                      <h6>2022.2.21</h6>
+                     <p class="card-text">5° <br>
+                       
+                        Direction : south-west
+                        <br>
+                        Speed :12-28 km/h
+                      </p>
+                  </div>
+              </div>
+              <div class="card col-md-2">
+                  <h4 class="card-title">Tuseday</h4>
+                <img class="cardd-img-top" src="src/output-onlinegiftools (7).gif" alt="Card image cap">
+                    <div class="card-body">
+                      
+                        <h6>2022.2.22</h6>
+                        <p class="card-text">0° <br>
+                       
+                        Direction : south-west
+                        <br>
+                        Speed : 12-28 km/h
+                      </p>
+                        
+                    </div>
+                </div>
+                 <div class="card col-md-2">
+                     <h4 class="card-title">Wendsday</h4>
+                <img class="cardd-img-top" src="src/output-onlinegiftools (8).gif" alt="Card image cap">
+                    <div class="card-body">
+                       
+                        <h6>2022.2.23</h6>
+                        <p class="card-text"> 1° <br>
+                       
+                        Direction : south-west
+                        <br>
+                        Speed : 12-28 km/h
+                      </p>
+                       
+                    </div>
+                </div>
+                 <div class="card col-md-2">
+                     <h4 class="card-title">Thurseday</h4>
+                <img class="cardd-img-top" src="src/output-onlinegiftools (6).gif" alt="Card image cap">
+                    <div class="card-body">
+                        <h6>2022.2.24</h6>
+                        <p class="card-text">-8° <br>
+                      
+                        Direction : south-west
+                        <br>
+                        Speed : 12-28 km/h
+                      </p>
+                        
+                    </div>
+                </div>
+                </div>
+              <div class="container">
+       <hr class="bg-dark" id="hr2"></div>
+       </div>
+       <p id="coder">Coded by <a href="mailto:pegah1251@gmail.com" id="email"> Pegah Moradpour </a></p>
+       <script src="index.js"></script>
+  </body>
+</html>
