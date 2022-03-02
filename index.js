@@ -2,6 +2,10 @@ function showTemperature(response) {
   document.querySelector("#number").innerHTML = Math.round(
     response.data.main.temp
   );
+  document.querySelector("#des").innerHTML =
+    response.data.weather[0].description.charAt(0).toUpperCase() +
+    response.data.weather[0].description.slice(1);
+
   document.querySelector("#city-name").innerHTML = response.data.name;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#speed").innerHTML = Math.round(
@@ -61,8 +65,28 @@ if (currentMin < 10) {
 let formattedDate = `${currentDay}  ${currentYear}.${currentDate}.${currentMonth}`;
 let formattedTime = `${currentHour} : ${currentMin}`;
 document.querySelector("span#nowDate").innerHTML = formattedDate;
-
 document.querySelector("#time").innerHTML = formattedTime;
+
+function findMyLoc(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+
+  function showPosition(position) {
+    let apiKey = "9ea936a09a35e656c9c6abae603a0dd5";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+    let lat = position.coords.latitude;
+    let long = position.coords.longitude;
+    axios.get(apiUrl).then(showTemperature);
+    axios.get(apiUrl).then(function myCityName(response) {
+      document.querySelector(
+        "#city-name"
+      ).innerHTML = `<em><strong>${response.data.name}</strong></em>`;
+    });
+  }
+}
+let btn = document.querySelector("#current");
+btn.addEventListener("click", findMyLoc);
 /*
 function changeC(event) {
   event.preventDefault();
@@ -86,7 +110,6 @@ farenheit.addEventListener("click", changeF);
 
 let Icons = [
   "clear sky",
-  "haze",
   "fog",
   "snow",
   "snow storm",
@@ -96,4 +119,5 @@ let Icons = [
   "light snow",
   "light rain",
   "heavy rain",
+  "mist",
 ];
