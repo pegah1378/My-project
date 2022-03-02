@@ -1,5 +1,4 @@
 function showTemperature(response) {
-  console.log(response.data.main.humidity);
   document.querySelector("#number").innerHTML = Math.round(
     response.data.main.temp
   );
@@ -8,7 +7,19 @@ function showTemperature(response) {
   document.querySelector("#speed").innerHTML = Math.round(
     response.data.wind.speed
   );
-  input.value = "";
+  let headImg = document.querySelector("#mainImg");
+  let mainWeather = response.data.weather[0].main.toLowerCase();
+  let descriptionWeather = response.data.weather[0].description.toLowerCase();
+
+  for (let i = 0; i < Icons.length; i++) {
+    if (descriptionWeather.localeCompare(Icons[i]) === 0) {
+      headImg.src = `src/${Icons[i]}.gif`;
+    } else if (mainWeather.localeCompare(Icons[i]) === 0) {
+      headImg.src = `src/${Icons[i]}.gif`;
+    } else if (response.data.weather[0].icon === "50d") {
+      headImg.src = `src/mist.gif`;
+    }
+  }
 }
 
 function search(event) {
@@ -38,10 +49,11 @@ let currentDay = days[currentTime.getDay()];
 let currentMonth = currentTime.getMonth();
 let currentDate = currentTime.getDate();
 let currentHour = currentTime.getHours();
+let currentMin = currentTime.getMinutes();
 if (currentHour < 10) {
   currentHour = `0 ${currentHour}`;
 }
-let currentMin = currentTime.getMinutes();
+
 if (currentMin < 10) {
   currentMin = `0 ${currentMin}`;
 }
@@ -55,6 +67,7 @@ document.querySelector("#time").innerHTML = formattedTime;
 function changeC(event) {
   event.preventDefault();
   let degree = document.querySelector("#number");
+
   degree.innerHTML = 19;
 }
 let cilisious = document.querySelector("#cilis");
@@ -63,9 +76,24 @@ cilisious.addEventListener("click", changeC);
 function changeF(event) {
   event.preventDefault();
   let degreeF = document.querySelector("#number");
-  degreeF.innerHTML = 66;
+  let displayF = (degreeF.innerHTML * 9)/5 +32;
+  degreeF.innerHTML = Math.round(displayF);
 }
 
 let farenheit = document.querySelector("#faren");
 farenheit.addEventListener("click", changeF);
 */
+
+let Icons = [
+  "clear sky",
+  "haze",
+  "fog",
+  "snow",
+  "snow storm",
+  "rain fall",
+  "rain cloud",
+  "rain",
+  "light snow",
+  "light rain",
+  "heavy rain",
+];
