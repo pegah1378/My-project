@@ -20,7 +20,7 @@ function showTemperature(response) {
       headImg.src = `src/${Icons[i]}.gif`;
     } else if (mainWeather.localeCompare(Icons[i]) === 0) {
       headImg.src = `src/${Icons[i]}.gif`;
-    } else if (response.data.weather[0].icon === "50d") {
+    } else if (response.data.weather[0].icon === "50n") {
       headImg.src = `src/mist.gif`;
     }
   }
