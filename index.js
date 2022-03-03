@@ -1,3 +1,26 @@
+let Icons = [
+  "clear sky",
+  "fog",
+  "snow",
+  "snow storm",
+  "rain fall",
+  "rain cloud",
+  "rain",
+  "light snow",
+  "light rain",
+  "heavy rain",
+  "mist",
+  "clouds",
+];
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 function showTemperature(response) {
   document.querySelector("#number").innerHTML = Math.round(
     response.data.main.temp
@@ -14,13 +37,13 @@ function showTemperature(response) {
   let headImg = document.querySelector("#mainImg");
   let mainWeather = response.data.weather[0].main.toLowerCase();
   let descriptionWeather = response.data.weather[0].description.toLowerCase();
-
+  let icon = response.data.weather[0].icon;
   for (let i = 0; i < Icons.length; i++) {
     if (descriptionWeather.localeCompare(Icons[i]) === 0) {
       headImg.src = `src/${Icons[i]}.gif`;
     } else if (mainWeather.localeCompare(Icons[i]) === 0) {
       headImg.src = `src/${Icons[i]}.gif`;
-    } else if (response.data.weather[0].icon === "50n") {
+    } else if (icon === "50d") {
       headImg.src = `src/mist.gif`;
     }
   }
@@ -36,16 +59,6 @@ function search(event) {
 }
 let submitCity = document.querySelector(".submit-city");
 submitCity.addEventListener("click", search);
-
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
 
 let currentTime = new Date();
 let currentYear = currentTime.getFullYear();
@@ -107,17 +120,3 @@ function changeF(event) {
 let farenheit = document.querySelector("#faren");
 farenheit.addEventListener("click", changeF);
 */
-
-let Icons = [
-  "clear sky",
-  "fog",
-  "snow",
-  "snow storm",
-  "rain fall",
-  "rain cloud",
-  "rain",
-  "light snow",
-  "light rain",
-  "heavy rain",
-  "mist",
-];
