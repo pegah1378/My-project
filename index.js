@@ -21,6 +21,14 @@ let days = [
   "Friday",
   "Saturday",
 ];
+
+function getForcast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "9ea936a09a35e656c9c6abae603a0dd5";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&unites=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 function showTemperature(response) {
   document.querySelector("#number").innerHTML = Math.round(
     response.data.main.temp
@@ -47,9 +55,11 @@ function showTemperature(response) {
       headImg.src = `src/mist.gif`;
     }
   }
+  getForcast(response.data.coord);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = ` <div class="row justify-content-around"> <!--row-->`;
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"];
@@ -148,4 +158,3 @@ function changeF(event) {
 let farenheit = document.querySelector("#faren");
 farenheit.addEventListener("click", changeF);
 */
-displayForecast();
