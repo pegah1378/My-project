@@ -49,6 +49,34 @@ function showTemperature(response) {
   }
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHtml = ` <div class="row justify-content-around"> <!--row-->`;
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      ` 
+      <div class="card col-md-2">
+              <h4 class="card-title">${day}</h4>
+              <img class="cardd-img-top" src="src/output-onlinegiftools (4).gif" alt="Card image cap" >
+                  <div class="card-body">
+                      
+                      <h6>2022.2.20</h6>
+                      <p class="card-text">8° <br>
+                        
+                        Direction : south-west
+                        <br>
+                        Speed : 12-28 km/h
+                      </p>
+                      
+                  </div>
+              </div>`;
+  });
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
+
 function search(event) {
   event.preventDefault();
   let apiKey = "9ea936a09a35e656c9c6abae603a0dd5";
@@ -120,3 +148,4 @@ function changeF(event) {
 let farenheit = document.querySelector("#faren");
 farenheit.addEventListener("click", changeF);
 */
+displayForecast();

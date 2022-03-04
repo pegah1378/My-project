@@ -10,6 +10,7 @@ body {
   border: 2px solid #bdbdbd;
   background-color: white;
 }
+
 .sun {
   width: 150px;
 }
@@ -41,6 +42,9 @@ body {
 h6 {
   text-align: center;
 }
+#time {
+  text-align: center !important;
+}
 .card {
   border-radius: 8px !important;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2) !important;
@@ -55,6 +59,9 @@ h6 {
   margin-left: 5px !important;
 }
 #city-name {
+  font-style: italic !important;
+}
+#info {
   font-style: italic !important;
 }
 #cilis {
