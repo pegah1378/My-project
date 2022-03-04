@@ -25,10 +25,9 @@ let days = [
 ];
 
 function getForcast(coordinates) {
-  console.log(coordinates);
   let apiKey = "9ea936a09a35e656c9c6abae603a0dd5";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&unites=metric`;
-  console.log(apiUrl);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+
   axios.get(apiUrl).then(displayForecast);
 }
 function showTemperature(response) {
@@ -44,16 +43,25 @@ function showTemperature(response) {
   document.querySelector("#speed").innerHTML = Math.round(
     response.data.wind.speed
   );
-  let headImg = document.querySelector("#mainImg");
+  let headImg = document.querySelector("img#mainImg");
   let mainWeather = response.data.weather[0].main.toLowerCase();
   let descriptionWeather = response.data.weather[0].description.toLowerCase();
-  let icon = response.data.weather[0].icon;
+  let iconID = response.data.weather[0].id;
   for (let i = 0; i < Icons.length; i++) {
     if (descriptionWeather.localeCompare(Icons[i]) === 0) {
       headImg.src = `src/${Icons[i]}.gif`;
     } else if (mainWeather.localeCompare(Icons[i]) === 0) {
       headImg.src = `src/${Icons[i]}.gif`;
-    } else if (icon === "50d") {
+    } else if (
+      iconID === 711 ||
+      iconID === 731 ||
+      iconID === 741 ||
+      iconID === 751 ||
+      iconID === 761 ||
+      iconID === 762 ||
+      iconID === 771 ||
+      iconID === 781
+    ) {
       headImg.src = `src/mist.gif`;
     }
   }
@@ -103,7 +111,7 @@ function displayForecast(response) {
         ` 
       <div class="card col-md-2">
               <h4 class="card-title">${formatDay(forecastDay.dt)}</h4>
-              <img class="cardd-img-top" src="src/mist.gif" alt="Card image cap" >
+              <img class="cardd-img-top" src="${forecastIcon}" alt="Card image cap" >
                   <div class="card-body">
                       
                     
@@ -160,11 +168,11 @@ function findMyLoc(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 
   function showPosition(position) {
-    let apiKey = "9ea936a09a35e656c9c6abae603a0dd5";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-
     let lat = position.coords.latitude;
     let long = position.coords.longitude;
+    let apiKey = "9ea936a09a35e656c9c6abae603a0dd5";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${apiKey}&units=metric`;
+
     axios.get(apiUrl).then(showTemperature);
     axios.get(apiUrl).then(function myCityName(response) {
       document.querySelector(
@@ -195,3 +203,7 @@ function changeF(event) {
 let farenheit = document.querySelector("#faren");
 farenheit.addEventListener("click", changeF);
 */
+let apiKey = "9ea936a09a35e656c9c6abae603a0dd5";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=tehran&appid=${apiKey}&units=metric`;
+
+axios.get(apiUrl).then(showTemperature);
