@@ -11,6 +11,8 @@ let Icons = [
   "heavy rain",
   "mist",
   "clouds",
+  "thunderstorm",
+  "drizzle",
 ];
 let days = [
   "Sunday",
@@ -58,30 +60,65 @@ function showTemperature(response) {
   getForcast(response.data.coord);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = ` <div class="row justify-content-around"> <!--row-->`;
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"];
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      ` 
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      let forecastIcon;
+      let mainWeather = forecastDay.weather[0].main.toLowerCase();
+      let descriptionWeather = forecastDay.weather[0].description.toLowerCase();
+      let iconID = forecastDay.weather[0].id;
+
+      for (let i = 0; i < Icons.length; i++) {
+        if (descriptionWeather.localeCompare(Icons[i]) === 0) {
+          forecastIcon = `src/${Icons[i]}.gif`;
+        } else if (mainWeather.localeCompare(Icons[i]) === 0) {
+          forecastIcon = `src/${Icons[i]}.gif`;
+        } else if (
+          iconID === 711 ||
+          iconID === 731 ||
+          iconID === 741 ||
+          iconID === 751 ||
+          iconID === 761 ||
+          iconID === 762 ||
+          iconID === 771 ||
+          iconID === 781
+        ) {
+          forecastIcon = `src/mist.gif`;
+        }
+      }
+      forecastHtml =
+        forecastHtml +
+        ` 
       <div class="card col-md-2">
-              <h4 class="card-title">${day}</h4>
-              <img class="cardd-img-top" src="src/output-onlinegiftools (4).gif" alt="Card image cap" >
+              <h4 class="card-title">${formatDay(forecastDay.dt)}</h4>
+              <img class="cardd-img-top" src="src/mist.gif" alt="Card image cap" >
                   <div class="card-body">
                       
-                      <h6>2022.2.20</h6>
-                      <p class="card-text">8° <br>
+                    
+                      <p class="card-text"><span id="max">${Math.round(
+                        forecastDay.temp.max
+                      )}°</span><br><span id="min">${Math.round(
+          forecastDay.temp.min
+        )}°</span> <br>
                         
-                        Direction : south-west
-                        <br>
-                        Speed : 12-28 km/h
+                        
                       </p>
                       
                   </div>
               </div>`;
+    }
   });
   forecastHtml = forecastHtml + `</div>`;
   forecastElement.innerHTML = forecastHtml;
