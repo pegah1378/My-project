@@ -88,3 +88,6 @@ h6 {
 #min {
   color: #c2c1bb;
 }
+#nowDate {
+  font-style: italic !important;
+}
